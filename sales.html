@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Management - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index-simple.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Accounts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="sales.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Sales track</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="stock.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="invoices.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Invoices</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tasks.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Task schedule</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="communication.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>communication</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="support.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Logout Button -->
+            <button id="logoutBtn" class="sidebar-logout" onclick="window.location.href='index-simple.html'">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sales Header -->
+            <div class="sales-header">
+                <h1>Sales Management</h1>
+                <div class="header-actions">
+                    <button id="addSaleBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Add New Sale
+                    </button>
+                    <button id="exportSalesBtn" class="btn-secondary">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sales Overview Cards -->
+            <div class="sales-overview">
+                <div class="overview-card">
+                    <div class="card-icon sales-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Today's Sales</h3>
+                        <p class="card-value">$12,450</p>
+                        <span class="card-change positive">+8.2%</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon revenue-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Monthly Revenue</h3>
+                        <p class="card-value">$245,670</p>
+                        <span class="card-change positive">+15.3%</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon items-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Items Sold</h3>
+                        <p class="card-value">1,247</p>
+                        <span class="card-change positive">+12.1%</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon profit-icon">
+                        <i class="fas fa-trending-up"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Profit Margin</h3>
+                        <p class="card-value">23.5%</p>
+                        <span class="card-change positive">+2.1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Form Section -->
+            <div class="sales-form-section">
+                <h2>Items to Sell</h2>
+                <div class="form-container">
+                    <form id="salesForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="itemName">Item Name</label>
+                                <input type="text" id="itemName" placeholder="Enter item name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="itemCategory">Category</label>
+                                <select id="itemCategory" required>
+                                    <option value="">Select category</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="books">Books</option>
+                                    <option value="home">Home & Garden</option>
+                                    <option value="sports">Sports</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" placeholder="0" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="unitPrice">Unit Price ($)</label>
+                                <input type="number" id="unitPrice" placeholder="0.00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">Customer Name</label>
+                                <input type="text" id="customerName" placeholder="Enter customer name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="saleDate">Sale Date</label>
+                                <input type="date" id="saleDate" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description (Optional)</label>
+                            <textarea id="description" placeholder="Add any additional notes..."></textarea>
+                        </div>
+                        
+                        <div class="total-section">
+                            <div class="total-display">
+                                <span>Total Amount: </span>
+                                <span id="totalAmount">$0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" id="cancelBtn" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" id="saveBtn" class="btn-save">
+                                <i class="fas fa-save"></i> Save Sale
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Current Inventory -->
+            <div class="inventory-section">
+                <h2>Items You Have</h2>
+                <div class="inventory-grid" id="inventoryGrid">
+                    <!-- Inventory items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Recent Sales -->
+            <div class="recent-sales-section">
+                <h2>Recent Sales</h2>
+                <div class="sales-table-wrapper">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Item</th>
+                                <th>Customer</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTableBody">
+                            <!-- Sales will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sales.js"></script>
+</body>
+</html>

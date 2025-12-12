@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index-simple.html" class="nav-link"><span class="nav-icon"></span><span>Accounts</span></a></li>
+                    <li class="nav-item"><a href="sales.html" class="nav-link"><span class="nav-icon"></span><span>Sales track</span></a></li>
+                    <li class="nav-item"><a href="stock.html" class="nav-link"><span class="nav-icon"></span><span>Stock</span></a></li>
+                    <li class="nav-item"><a href="invoices.html" class="nav-link"><span class="nav-icon"></span><span>Invoices</span></a></li>
+                    <li class="nav-item"><a href="tasks.html" class="nav-link"><span class="nav-icon"></span><span>Task schedule</span></a></li>
+                    <li class="nav-item"><a href="communication.html" class="nav-link"><span class="nav-icon"></span><span>communication</span></a></li>
+                    <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"></span><span>Report</span></a></li>
+                    <li class="nav-item active"><a href="support.html" class="nav-link"><span class="nav-icon"></span><span>Support</span></a></li>
+                </ul>
+            </nav>
+            <button class="sidebar-logout" onclick="window.location.href='index-simple.html'"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        
+        <div class="main-content">
+            <div class="sales-header">
+                <h1>Support Center</h1>
+                <div class="header-actions">
+                    <button id="contactSupportBtn" class="btn-primary"><i class="fas fa-headset"></i> Contact Support</button>
+                    <button id="newTicketBtn" class="btn-secondary"><i class="fas fa-ticket-alt"></i> New Ticket</button>
+                </div>
+            </div>
+
+            <!-- Support Options Grid -->
+            <div class="support-options-grid">
+                <div class="support-option" onclick="supportManager.openSection('documentation')">
+                    <div class="support-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Documentation</h3>
+                    <p>User guides, tutorials, and help articles</p>
+                    <div class="support-badge">50+ Articles</div>
+                </div>
+
+                <div class="support-option" onclick="supportManager.openSection('video-tutorials')">
+                    <div class="support-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Video Tutorials</h3>
+                    <p>Step-by-step video guides and walkthroughs</p>
+                    <div class="support-badge">25+ Videos</div>
+                </div>
+
+                <div class="support-option" onclick="supportManager.openSection('faq')">
+                    <div class="support-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>FAQ</h3>
+                    <p>Frequently asked questions and quick answers</p>
+                    <div class="support-badge">100+ Q&As</div>
+                </div>
+
+                <div class="support-option" onclick="supportManager.openSection('live-chat')">
+                    <div class="support-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <div class="support-badge online">Online Now</div>
+                </div>
+
+                <div class="support-option" onclick="supportManager.openSection('tickets')">
+                    <div class="support-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Support Tickets</h3>
+                    <p>Submit and track your support requests</p>
+                    <div class="support-badge">3 Open</div>
+                </div>
+
+                <div class="support-option" onclick="supportManager.openSection('system-status')">
+                    <div class="support-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>System Status</h3>
+                    <p>Check system health and service status</p>
+                    <div class="support-badge healthy">All Systems Operational</div>
+                </div>
+            </div>
+
+            <!-- Quick Help Section -->
+            <div class="quick-help-section">
+                <h2>Quick Help</h2>
+                <div class="help-categories">
+                    <div class="help-category">
+                        <h3><i class="fas fa-rocket"></i> Getting Started</h3>
+                        <ul>
+                            <li><a href="#" onclick="supportManager.openArticle('setup')">Initial Setup Guide</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('first-steps')">Your First Steps</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('navigation')">Navigating the Dashboard</a></li>
+                        </ul>
+                    </div>
+                    <div class="help-category">
+                        <h3><i class="fas fa-shopping-cart"></i> Sales Management</h3>
+                        <ul>
+                            <li><a href="#" onclick="supportManager.openArticle('add-sale')">Adding Sales Records</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('track-inventory')">Tracking Inventory</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('generate-reports')">Generating Reports</a></li>
+                        </ul>
+                    </div>
+                    <div class="help-category">
+                        <h3><i class="fas fa-cog"></i> Account Settings</h3>
+                        <ul>
+                            <li><a href="#" onclick="supportManager.openArticle('profile')">Managing Your Profile</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('security')">Security Settings</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('notifications')">Notification Preferences</a></li>
+                        </ul>
+                    </div>
+                    <div class="help-category">
+                        <h3><i class="fas fa-tools"></i> Troubleshooting</h3>
+                        <ul>
+                            <li><a href="#" onclick="supportManager.openArticle('login-issues')">Login Issues</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('performance')">Performance Problems</a></li>
+                            <li><a href="#" onclick="supportManager.openArticle('data-recovery')">Data Recovery</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <h2>Contact Information</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Support</h4>
+                            <p>support@smartrecordkeeper.com</p>
+                            <span>Response within 24 hours</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone Support</h4>
+                            <p>+1 (555) 123-HELP</p>
+                            <span>Mon-Fri, 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Live Chat</h4>
+                            <p>Available in-app</p>
+                            <span>Mon-Sun, 8AM-8PM EST</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Tickets -->
+            <div class="recent-sales-section">
+                <div class="section-header-inline">
+                    <h2>Your Support Tickets</h2>
+                    <div class="filter-controls">
+                        <select id="ticketStatusFilter">
+                            <option value="">All Status</option>
+                            <option value="open">Open</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sales-table-wrapper">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="support.js"></script>
+</body>
+</html>

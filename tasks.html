@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Schedule - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index-simple.html" class="nav-link"><span class="nav-icon"></span><span>Accounts</span></a></li>
+                    <li class="nav-item"><a href="sales.html" class="nav-link"><span class="nav-icon"></span><span>Sales track</span></a></li>
+                    <li class="nav-item"><a href="stock.html" class="nav-link"><span class="nav-icon"></span><span>Stock</span></a></li>
+                    <li class="nav-item"><a href="invoices.html" class="nav-link"><span class="nav-icon"></span><span>Invoices</span></a></li>
+                    <li class="nav-item active"><a href="tasks.html" class="nav-link"><span class="nav-icon"></span><span>Task schedule</span></a></li>
+                    <li class="nav-item"><a href="communication.html" class="nav-link"><span class="nav-icon"></span><span>communication</span></a></li>
+                    <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"></span><span>Report</span></a></li>
+                    <li class="nav-item"><a href="support.html" class="nav-link"><span class="nav-icon"></span><span>Support</span></a></li>
+                </ul>
+            </nav>
+            <button class="sidebar-logout" onclick="window.location.href='index-simple.html'"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        
+        <div class="main-content">
+            <div class="sales-header">
+                <h1>Task Schedule</h1>
+                <div class="header-actions">
+                    <button id="addTaskBtn" class="btn-primary"><i class="fas fa-plus"></i> Add Task</button>
+                    <button id="calendarViewBtn" class="btn-secondary"><i class="fas fa-calendar"></i> Calendar View</button>
+                </div>
+            </div>
+
+            <div class="sales-overview">
+                <div class="overview-card">
+                    <div class="card-icon sales-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="card-content">
+                        <h3>Total Tasks</h3>
+                        <p class="card-value">45</p>
+                        <span class="card-change positive">+5 this week</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon revenue-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-content">
+                        <h3>Completed</h3>
+                        <p class="card-value">32</p>
+                        <span class="card-change positive">71%</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon profit-icon"><i class="fas fa-clock"></i></div>
+                    <div class="card-content">
+                        <h3>In Progress</h3>
+                        <p class="card-value">10</p>
+                        <span class="card-change neutral">22%</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon items-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="card-content">
+                        <h3>Overdue</h3>
+                        <p class="card-value warning">3</p>
+                        <span class="card-change negative">7%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Form -->
+            <div class="sales-form-section" id="taskFormSection" style="display: none;">
+                <h2>Add New Task</h2>
+                <form id="taskForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskTitle">Task Title</label>
+                            <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority" required>
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="assignedTo">Assigned To</label>
+                            <select id="assignedTo" required>
+                                <option value="Imani Frank">Imani Frank</option>
+                                <option value="John Smith">John Smith</option>
+                                <option value="Sarah Johnson">Sarah Johnson</option>
+                                <option value="Mike Davis">Mike Davis</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskCategory">Category</label>
+                            <select id="taskCategory" required>
+                                <option value="sales">Sales</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="support">Customer Support</option>
+                                <option value="development">Development</option>
+                                <option value="admin">Administrative</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" id="dueDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" placeholder="Task details and requirements" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancelTaskBtn" class="btn-cancel"><i class="fas fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn-save"><i class="fas fa-save"></i> Save Task</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Task List -->
+            <div class="recent-sales-section">
+                <div class="section-header-inline">
+                    <h2>Task List</h2>
+                    <div class="filter-controls">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="overdue">Overdue</option>
+                        </select>
+                        <select id="priorityFilter">
+                            <option value="">All Priorities</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <input type="text" id="searchTasks" placeholder="Search tasks...">
+                    </div>
+                </div>
+                <div class="sales-table-wrapper">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Assigned To</th>
+                                <th>Priority</th>
+                                <th>Category</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tasksTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="tasks.js"></script>
+</body>
+</html>

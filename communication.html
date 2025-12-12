@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Center - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index-simple.html" class="nav-link"><span class="nav-icon"></span><span>Accounts</span></a></li>
+                    <li class="nav-item"><a href="sales.html" class="nav-link"><span class="nav-icon"></span><span>Sales track</span></a></li>
+                    <li class="nav-item"><a href="stock.html" class="nav-link"><span class="nav-icon"></span><span>Stock</span></a></li>
+                    <li class="nav-item"><a href="invoices.html" class="nav-link"><span class="nav-icon"></span><span>Invoices</span></a></li>
+                    <li class="nav-item"><a href="tasks.html" class="nav-link"><span class="nav-icon"></span><span>Task schedule</span></a></li>
+                    <li class="nav-item active"><a href="communication.html" class="nav-link"><span class="nav-icon"></span><span>communication</span></a></li>
+                    <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"></span><span>Report</span></a></li>
+                    <li class="nav-item"><a href="support.html" class="nav-link"><span class="nav-icon"></span><span>Support</span></a></li>
+                </ul>
+            </nav>
+            <button class="sidebar-logout" onclick="window.location.href='index-simple.html'"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        
+        <div class="main-content">
+            <div class="sales-header">
+                <h1>Communication Center</h1>
+                <div class="header-actions">
+                    <button id="composeBtn" class="btn-primary"><i class="fas fa-pen"></i> Compose</button>
+                    <button id="refreshBtn" class="btn-secondary"><i class="fas fa-sync"></i> Refresh</button>
+                </div>
+            </div>
+
+            <div class="sales-overview">
+                <div class="overview-card">
+                    <div class="card-icon sales-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="card-content">
+                        <h3>Unread Messages</h3>
+                        <p class="card-value">12</p>
+                        <span class="card-change neutral">3 new today</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon revenue-icon"><i class="fas fa-phone"></i></div>
+                    <div class="card-content">
+                        <h3>Missed Calls</h3>
+                        <p class="card-value">5</p>
+                        <span class="card-change negative">2 urgent</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon profit-icon"><i class="fas fa-comments"></i></div>
+                    <div class="card-content">
+                        <h3>Active Chats</h3>
+                        <p class="card-value">8</p>
+                        <span class="card-change positive">+3 today</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon items-icon"><i class="fas fa-bell"></i></div>
+                    <div class="card-content">
+                        <h3>Notifications</h3>
+                        <p class="card-value">18</p>
+                        <span class="card-change positive">+6 new</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communication Tabs -->
+            <div class="communication-tabs">
+                <button class="tab-btn active" data-tab="messages">Messages</button>
+                <button class="tab-btn" data-tab="calls">Call Log</button>
+                <button class="tab-btn" data-tab="notifications">Notifications</button>
+            </div>
+
+            <!-- Messages Section -->
+            <div class="tab-content" id="messagesTab">
+                <div class="messages-container">
+                    <div class="message-sidebar">
+                        <div class="message-search">
+                            <input type="text" id="messageSearch" placeholder="Search conversations...">
+                        </div>
+                        <div class="conversation-list" id="conversationList"></div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="contact-info">
+                                <h3 id="contactName">Select a conversation</h3>
+                                <p id="contactStatus">No conversation selected</p>
+                            </div>
+                        </div>
+                        <div class="message-body" id="messageBody">
+                            <div class="no-conversation">
+                                <i class="fas fa-comments"></i>
+                                <p>Select a conversation to start messaging</p>
+                            </div>
+                        </div>
+                        <div class="message-input" id="messageInput" style="display: none;">
+                            <input type="text" id="newMessage" placeholder="Type your message...">
+                            <button id="sendBtn" class="btn-primary"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Log Section -->
+            <div class="tab-content" id="callsTab" style="display: none;">
+                <div class="recent-sales-section">
+                    <h3>Recent Calls</h3>
+                    <div class="sales-table-wrapper">
+                        <table class="sales-table">
+                            <thead>
+                                <tr>
+                                    <th>Contact</th>
+                                    <th>Type</th>
+                                    <th>Duration</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="callLogBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="tab-content" id="notificationsTab" style="display: none;">
+                <div class="notifications-container">
+                    <div class="notification-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="system">System</button>
+                        <button class="filter-btn" data-filter="sales">Sales</button>
+                        <button class="filter-btn" data-filter="tasks">Tasks</button>
+                    </div>
+                    <div class="notifications-list" id="notificationsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="communication.js"></script>
+</body>
+</html>

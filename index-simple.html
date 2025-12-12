@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page">
+        <div class="login-container">
+            <!-- Left Panel - Branding -->
+            <div class="login-left-panel">
+                <div class="branding">
+                    <h1>SMART</h1>
+                    <div class="divider"></div>
+                    <h2>RECORD KEEPER</h2>
+                </div>
+            </div>
+            
+            <!-- Right Panel - Login Form -->
+            <div class="login-right-panel">
+                <div class="login-content">
+                    <h3>LOGIN</h3>
+                    
+                    <form id="loginForm" class="login-form">
+                       <!-- <input type="email" id="email" placeholder="Email" required> -->
+                        <input type="text" id="username" placeholder="User name" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        
+                        <button type="submit" class="welcome-btn">welcome</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page hidden">
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Profile Section -->
+                <div class="profile-section">
+                    <div class="profile-avatar"></div>
+                    <div class="profile-info">
+                        <h3>Manager</h3>
+                        <p>Imani Frank</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="sidebar-nav">
+                    <ul class="nav-menu">
+                        <li class="nav-item active">
+                            <a href="#" class="nav-link" onclick="event.preventDefault()">
+                                <span class="nav-icon"></span>
+                                <span>Accounts</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="sales.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Sales track</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="stock.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Stock</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="invoices.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Invoices</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tasks.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Task schedule</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="communication.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>communication</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Report</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="support.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span>Support</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Logout Button -->
+                <button id="logoutBtn" class="sidebar-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Search Bar -->
+                <div class="search-section">
+                    <input type="text" class="main-search" placeholder="Search...">
+                </div>
+                
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <div class="dashboard-card"></div>
+                    <div class="dashboard-card"></div>
+                </div>
+                
+                <!-- Recent Sales List -->
+                <div class="sales-section">
+                    <h2>Recent sale list</h2>
+                    
+                    <!-- Tab Navigation -->
+                    <div class="sales-tabs">
+                        <button class="tab-btn active" data-tab="now">Now</button>
+                        <button class="tab-btn" data-tab="delivered">Delivered</button>
+                        <button class="tab-btn" data-tab="cancelled">Cancelled</button>
+                    </div>
+                    
+                    <!-- Sales Table -->
+                    <div class="sales-table-container">
+                        <table class="sales-table">
+                            <thead>
+                                <tr>
+                                    <th>Client name</th>
+                                    <th>Product ID</th>
+                                    <th>Unit</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTableBody">
+                                <!-- Sales data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Records List Page -->
+    <div id="recordsPage" class="page hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <button id="backToDashboard" class="btn-back">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+                <h1 class="nav-title">Records</h1>
+                <button id="logoutBtn2" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Records Content -->
+        <div class="main-container">
+            <div class="records-header">
+                <h2>All Records</h2>
+                <button id="addRecordFromList" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add Record
+                </button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchRecords" placeholder="Search records...">
+                </div>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="sales">Sales</option>
+                    <option value="expenses">Expenses</option>
+                    <option value="customer-info">Customer Info</option>
+                    <option value="personal-notes">Personal Notes</option>
+                </select>
+            </div>
+
+            <!-- Records List -->
+            <div id="recordsList" class="records-list">
+                <!-- Records will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Record Modal -->
+    <div id="recordModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Record</h2>
+                <button id="closeModal" class="btn-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="recordForm" class="record-form">
+                <div class="form-group">
+                    <label for="recordCategory">Category</label>
+                    <select id="recordCategory" required>
+                        <option value="sales">Sales</option>
+                        <option value="expenses">Expenses</option>
+                        <option value="customer-info">Customer Info</option>
+                        <option value="personal-notes">Personal Notes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="recordTitle">Title</label>
+                    <input type="text" id="recordTitle" placeholder="Enter record title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recordDescription">Description</label>
+                    <textarea id="recordDescription" placeholder="Enter description" required></textarea>
+                </div>
+
+                <div id="amountGroup" class="form-group">
+                    <label for="recordAmount">Amount ($)</label>
+                    <input type="number" id="recordAmount" placeholder="Enter amount" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="recordDate">Date</label>
+                    <input type="date" id="recordDate" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelRecord" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

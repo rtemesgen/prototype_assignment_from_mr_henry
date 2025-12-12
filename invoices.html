@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Management - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index-simple.html" class="nav-link"><span class="nav-icon"></span><span>Accounts</span></a></li>
+                    <li class="nav-item"><a href="sales.html" class="nav-link"><span class="nav-icon"></span><span>Sales track</span></a></li>
+                    <li class="nav-item"><a href="stock.html" class="nav-link"><span class="nav-icon"></span><span>Stock</span></a></li>
+                    <li class="nav-item active"><a href="invoices.html" class="nav-link"><span class="nav-icon"></span><span>Invoices</span></a></li>
+                    <li class="nav-item"><a href="tasks.html" class="nav-link"><span class="nav-icon"></span><span>Task schedule</span></a></li>
+                    <li class="nav-item"><a href="communication.html" class="nav-link"><span class="nav-icon"></span><span>communication</span></a></li>
+                    <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"></span><span>Report</span></a></li>
+                    <li class="nav-item"><a href="support.html" class="nav-link"><span class="nav-icon"></span><span>Support</span></a></li>
+                </ul>
+            </nav>
+            <button class="sidebar-logout" onclick="window.location.href='index-simple.html'"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        
+        <div class="main-content">
+            <div class="sales-header">
+                <h1>Invoice Management</h1>
+                <div class="header-actions">
+                    <button id="createInvoiceBtn" class="btn-primary"><i class="fas fa-plus"></i> Create Invoice</button>
+                    <button id="exportInvoicesBtn" class="btn-secondary"><i class="fas fa-download"></i> Export</button>
+                </div>
+            </div>
+
+            <div class="sales-overview">
+                <div class="overview-card">
+                    <div class="card-icon sales-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="card-content">
+                        <h3>Total Invoices</h3>
+                        <p class="card-value">342</p>
+                        <span class="card-change positive">+12 this month</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon revenue-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-content">
+                        <h3>Paid Invoices</h3>
+                        <p class="card-value">298</p>
+                        <span class="card-change positive">87%</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon profit-icon"><i class="fas fa-clock"></i></div>
+                    <div class="card-content">
+                        <h3>Pending</h3>
+                        <p class="card-value warning">44</p>
+                        <span class="card-change neutral">13%</span>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon items-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="card-content">
+                        <h3>Total Amount</h3>
+                        <p class="card-value">$124,567</p>
+                        <span class="card-change positive">+15.3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice Form -->
+            <div class="sales-form-section" id="invoiceFormSection" style="display: none;">
+                <h2>Create New Invoice</h2>
+                <form id="invoiceForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clientName">Client Name</label>
+                            <input type="text" id="clientName" placeholder="Enter client name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Client Email</label>
+                            <input type="email" id="clientEmail" placeholder="client@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="invoiceDate">Invoice Date</label>
+                            <input type="date" id="invoiceDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" id="dueDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="Invoice description or notes" required></textarea>
+                    </div>
+                    
+                    <!-- Invoice Items -->
+                    <div class="invoice-items-section">
+                        <h3>Invoice Items</h3>
+                        <div id="invoiceItems">
+                            <div class="invoice-item-row">
+                                <div class="form-group">
+                                    <label>Item Description</label>
+                                    <input type="text" class="item-description" placeholder="Item description" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" class="item-quantity" placeholder="1" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Unit Price</label>
+                                    <input type="number" class="item-price" placeholder="0.00" step="0.01" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <input type="text" class="item-total" readonly>
+                                </div>
+                                <button type="button" class="btn-remove-item"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <button type="button" id="addItemBtn" class="btn-secondary"><i class="fas fa-plus"></i> Add Item</button>
+                    </div>
+
+                    <div class="invoice-totals">
+                        <div class="total-row">
+                            <span>Subtotal: </span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Tax (10%): </span>
+                            <span id="taxAmount">$0.00</span>
+                        </div>
+                        <div class="total-row final-total">
+                            <span>Total Amount: </span>
+                            <span id="finalTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancelInvoiceBtn" class="btn-cancel"><i class="fas fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn-save"><i class="fas fa-save"></i> Create Invoice</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Invoice List -->
+            <div class="recent-sales-section">
+                <div class="section-header-inline">
+                    <h2>All Invoices</h2>
+                    <div class="filter-controls">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="overdue">Overdue</option>
+                        </select>
+                        <input type="text" id="searchInvoices" placeholder="Search invoices...">
+                    </div>
+                </div>
+                <div class="sales-table-wrapper">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Client</th>
+                                <th>Date</th>
+                                <th>Due Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoicesTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="invoices.js"></script>
+</body>
+</html>

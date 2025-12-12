@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - Smart Record Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>Manager</h3>
+                    <p>Imani Frank</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index-simple.html" class="nav-link"><span class="nav-icon"></span><span>Accounts</span></a></li>
+                    <li class="nav-item"><a href="sales.html" class="nav-link"><span class="nav-icon"></span><span>Sales track</span></a></li>
+                    <li class="nav-item"><a href="stock.html" class="nav-link"><span class="nav-icon"></span><span>Stock</span></a></li>
+                    <li class="nav-item"><a href="invoices.html" class="nav-link"><span class="nav-icon"></span><span>Invoices</span></a></li>
+                    <li class="nav-item"><a href="tasks.html" class="nav-link"><span class="nav-icon"></span><span>Task schedule</span></a></li>
+                    <li class="nav-item"><a href="communication.html" class="nav-link"><span class="nav-icon"></span><span>communication</span></a></li>
+                    <li class="nav-item active"><a href="reports.html" class="nav-link"><span class="nav-icon"></span><span>Report</span></a></li>
+                    <li class="nav-item"><a href="support.html" class="nav-link"><span class="nav-icon"></span><span>Support</span></a></li>
+                </ul>
+            </nav>
+            <button class="sidebar-logout" onclick="window.location.href='index-simple.html'"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        
+        <div class="main-content">
+            <div class="sales-header">
+                <h1>Reports & Analytics</h1>
+                <div class="header-actions">
+                    <button id="generateReportBtn" class="btn-primary"><i class="fas fa-chart-bar"></i> Generate Report</button>
+                    <button id="exportAllBtn" class="btn-secondary"><i class="fas fa-download"></i> Export All</button>
+                </div>
+            </div>
+
+            <!-- Date Range Selector -->
+            <div class="date-range-selector">
+                <div class="date-inputs">
+                    <div class="form-group">
+                        <label for="startDate">From Date:</label>
+                        <input type="date" id="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">To Date:</label>
+                        <input type="date" id="endDate">
+                    </div>
+                    <button id="applyDateRange" class="btn-primary">Apply</button>
+                </div>
+                <div class="quick-ranges">
+                    <button class="quick-range-btn" data-range="7">Last 7 Days</button>
+                    <button class="quick-range-btn" data-range="30">Last 30 Days</button>
+                    <button class="quick-range-btn" data-range="90">Last 90 Days</button>
+                    <button class="quick-range-btn active" data-range="365">This Year</button>
+                </div>
+            </div>
+
+            <!-- Report Cards -->
+            <div class="report-cards-grid">
+                <div class="report-card sales-report">
+                    <div class="report-header">
+                        <h3>Sales Report</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="report-summary">
+                        <div class="metric">
+                            <span class="label">Total Sales</span>
+                            <span class="value">$245,670</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Growth</span>
+                            <span class="value positive">+15.3%</span>
+                        </div>
+                    </div>
+                    <button onclick="reportsManager.generateReport('sales')" class="generate-btn">Generate Detailed Report</button>
+                </div>
+
+                <div class="report-card financial-report">
+                    <div class="report-header">
+                        <h3>Financial Report</h3>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="report-summary">
+                        <div class="metric">
+                            <span class="label">Revenue</span>
+                            <span class="value">$198,450</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Profit</span>
+                            <span class="value positive">$89,320</span>
+                        </div>
+                    </div>
+                    <button onclick="reportsManager.generateReport('financial')" class="generate-btn">Generate Detailed Report</button>
+                </div>
+
+                <div class="report-card inventory-report">
+                    <div class="report-header">
+                        <h3>Inventory Report</h3>
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="report-summary">
+                        <div class="metric">
+                            <span class="label">Total Items</span>
+                            <span class="value">1,247</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Low Stock</span>
+                            <span class="value warning">23</span>
+                        </div>
+                    </div>
+                    <button onclick="reportsManager.generateReport('inventory')" class="generate-btn">Generate Detailed Report</button>
+                </div>
+
+                <div class="report-card customer-report">
+                    <div class="report-header">
+                        <h3>Customer Report</h3>
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="report-summary">
+                        <div class="metric">
+                            <span class="label">Total Customers</span>
+                            <span class="value">342</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">New This Month</span>
+                            <span class="value positive">+18</span>
+                        </div>
+                    </div>
+                    <button onclick="reportsManager.generateReport('customer')" class="generate-btn">Generate Detailed Report</button>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <h2>Performance Overview</h2>
+                <div class="chart-container">
+                    <div class="chart-placeholder" id="performanceChart">
+                        <div class="chart-content">
+                            <i class="fas fa-chart-area"></i>
+                            <h3>Sales Performance Chart</h3>
+                            <p>Interactive chart showing sales trends over time</p>
+                            <div class="sample-data">
+                                <div class="data-point" style="height: 60%"></div>
+                                <div class="data-point" style="height: 80%"></div>
+                                <div class="data-point" style="height: 45%"></div>
+                                <div class="data-point" style="height: 90%"></div>
+                                <div class="data-point" style="height: 70%"></div>
+                                <div class="data-point" style="height: 85%"></div>
+                                <div class="data-point" style="height: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generated Reports List -->
+            <div class="recent-sales-section">
+                <div class="section-header-inline">
+                    <h2>Generated Reports</h2>
+                    <div class="filter-controls">
+                        <select id="reportTypeFilter">
+                            <option value="">All Types</option>
+                            <option value="sales">Sales</option>
+                            <option value="financial">Financial</option>
+                            <option value="inventory">Inventory</option>
+                            <option value="customer">Customer</option>
+                        </select>
+                        <input type="text" id="searchReports" placeholder="Search reports...">
+                    </div>
+                </div>
+                <div class="sales-table-wrapper">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Report Name</th>
+                                <th>Type</th>
+                                <th>Date Range</th>
+                                <th>Generated On</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="reports.js"></script>
+</body>
+</html>
